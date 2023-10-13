@@ -16,6 +16,17 @@ pipeline {
            }
         }
 
+        stage('Build Login'){
+            steps{
+                script{
+                    sh '''
+                    echo 'Login Docker'
+                    docker login -u gabeokiri
+                    '''
+                }
+            }
+        }
+
         stage('Build Docker'){
             steps{
                 script{
@@ -26,7 +37,7 @@ pipeline {
                 }
             }
         }
-
+        
         stage('Push the artifacts'){
            steps{
                 script{
